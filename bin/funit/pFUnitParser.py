@@ -22,7 +22,9 @@ assert_operands = {'fail': 0, 'equal': 2, 'notequal': 2, 'true': 1, 'false': 1,
                    'isnan': 1, 'ismemberof': 2, 'contains': 2, 'any': 1,
                    'all': 1, 'notall': 1, 'none': 1, 'ispermutationof': 2,
                    'exceptionraised': 0, 'sameshape': 2, 'that': 2, '_that': 2,
-                   'approx': 2}
+                   'approx': 2, 'approxequal': 2}
+
+assert_alias_map = {'approx' : 'ApproxEqual'}
 
 def cppSetLineAndFile(line, file):
     if sysconfig.get_platform() == 'mingw':
@@ -272,6 +274,7 @@ class AtAssert(Action):
     def __init__(self, parser):
         self.parser = parser
         self.assert_variants = '|'.join(assert_operands.keys())
+        self.alias_map = assert_alias_map
 
     def match(self, line):
 #        m = re.match('\s*@assert('+assertVariants+')\s*\\((.*\w.*)\\)\s*$', line, re.IGNORECASE)
@@ -306,7 +309,12 @@ class AtAssert(Action):
         if (len(match.group(2)) > 0) and not match.group(2).isspace():
             fragment += ", "
         fragment += "&\n"
-        parser.outputFile.write(fragment.format(match.group(1), match.group(2)))
+        if (match.group(1).lower() in self.alias_map.keys()):
+            function_name = self.alias_map[match.group(1).lower()]
+        else:
+            function_name = match.group(1)
+
+        parser.outputFile.write(fragment.format(function_name, match.group(2)))
         self.appendSourceLocation(parser.outputFile,
                                   parser.fileName,
                                   parser.currentLineNumber)

@@ -3,7 +3,7 @@
 ! Reference comparison:  default real scalar
 
 
-module Test_AssertApprox_Real
+module Test_AssertApproxEqual_Real
   use, intrinsic :: iso_fortran_env, only: REAL32, REAL64
   use, intrinsic :: iso_fortran_env, only: REAL128
   use pf_StringUtilities
@@ -26,7 +26,7 @@ module Test_AssertApprox_Real
 #endif
   implicit none
      
-  @suite(name='AssertApprox_Real_suite')
+  @suite(name='AssertApproxEqual_Real_suite')
 
   real(kind=REAL32), parameter :: good = 1
   real(kind=REAL32), parameter :: bad  = -999
@@ -40,6 +40,7 @@ contains
 
   @test
   subroutine test_relatively_equal_scalar()
+     @assertApproxEqual(1, 1.1, 0.2, 0.2)
      @assertApprox(1, 1.1, 0.2, 0.2)
      @assertApprox(1.0, 1.1, 0.2, 0.2)
      @assertApprox(1.0, 1.1, 0.2, 0.2)
@@ -142,11 +143,11 @@ contains
   @test
   subroutine test_rel_equal_fail_scalar_with_tolerance()
      ! This should succeed.
-     call assertApprox(10.0, 11.0, 0.2, 0.2)
+     call assertApproxEqual(10.0, 11.0, 0.2, 0.2)
      ! But this should fail
-     call assertApprox(10.0, 12.0, 0.1, 0.1)
+     call assertApproxEqual(10.0, 12.0, 0.1, 0.1)
      call assertExceptionRaised(&
-          & 'AssertApprox failure:' // NL // &
+          & 'AssertApproxEqual failure:' // NL // &
           & '           Expected: <'//to_string(10.)//'>' // NL // &
           & '             Actual: <'//to_string(12.)//'>' // NL // &
           & '         Difference: <'//to_string(2.0)//'> (greater than calculated tolerance of '//to_string(1.0)//')' &
@@ -163,5 +164,5 @@ function to_string(x) result(str)
 
 end function to_string
 
-end module Test_AssertApprox_Real
+end module Test_AssertApproxEqual_Real
   

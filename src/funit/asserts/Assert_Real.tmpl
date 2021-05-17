@@ -249,7 +249,7 @@ module pf_AssertReal_{rank}d
    @overload(AssertGreaterThanOrEqual, no_tol)
 
    @overload(AssertRelativelyEqual, with_tol)
-   @overload(AssertApprox, with_rel_tol)
+   @overload(AssertApproxEqual, with_rel_tol)
    @overload(AssertAssociated, minimal)
 
    @overload(assert_equal, minimal)
@@ -259,7 +259,7 @@ module pf_AssertReal_{rank}d
    @overload(assert_greater_than, minimal)
    @overload(assert_greater_than_or_equal, minimal)
    @overload(assert_relatively_equal, minimal)
-   @overload(assert_approx, minimal)
+   @overload(assert_approximately_equal, minimal)
 
 
    integer, parameter :: MAX_LEN_REAL_AS_STRING = 40
@@ -1056,7 +1056,7 @@ contains
    end subroutine {name}
    @end template
 
-   @template(AssertApprox,[expected,actual,rel_tolerance,tolerance])
+   @template(AssertApproxEqual,[expected,actual,rel_tolerance,tolerance])
    subroutine {name}(expected, actual, rel_tolerance, tolerance, message, location)
       {expected.type} (kind={expected.kind}), intent(in) :: expected {expected.dims}
       {actual.type} (kind={actual.kind}), intent(in) :: actual {actual.dims}
@@ -1078,19 +1078,19 @@ contains
       e = 0*actual + expected
 
       !if (any([e] == 0)) then
-      !   call fail_generic('Small denominator detected in AssertApprox.',message=message, location=location)
+      !   call fail_generic('Small denominator detected in AssertApproxEqual.',message=message, location=location)
       !   return
       !end if
 
       rel_t = real(rel_tolerance, kind(actual))
       t = real(tolerance, kind(actual))
 
-      call assert_approx(e, actual, rel_t, t, message=message, location=location)
+      call assert_approximately_equal(e, actual, rel_t, t, message=message, location=location)
 
    end subroutine {name}
    @end template
    
-   @template(assert_approx,[actual])
+   @template(assert_approximately_equal,[actual])
    subroutine {name}(expected, actual, rel_tolerance, tolerance, unused, message, location)
       {actual.type} (kind={actual.kind}), intent(in) :: expected {actual.dims}
       {actual.type} (kind={actual.kind}), intent(in) :: actual {actual.dims}
@@ -1154,10 +1154,10 @@ contains
       write(diff_str,'("<",g0,"> (greater than calculated tolerance of ",g0,")")') d, calc_eps
       
 #if {actual.rank} == 0
-      call fail_not_approx(trim(expected_str), trim(actual_str), trim(diff_str), &
+      call fail_not_approximately_equal(trim(expected_str), trim(actual_str), trim(diff_str), &
            & message=message, location=location)
 #else
-      call fail_not_approx(trim(expected_str), trim(actual_str), trim(diff_str), index=i, &
+      call fail_not_approximately_equal(trim(expected_str), trim(actual_str), trim(diff_str), index=i, &
            & message=message, location=location)
 #endif
    end subroutine {name}
@@ -1170,7 +1170,7 @@ contains
    @instantiate(AssertGreaterThan, with_tol)
    @instantiate(AssertGreaterThanOrEqual, with_tol)
    @instantiate(AssertRelativelyEqual, with_tol)
-   @instantiate(AssertApprox, with_rel_tol)
+   @instantiate(AssertApproxEqual, with_rel_tol)
 
    @instantiate(AssertEqual, no_tol)
    @instantiate(AssertNotEqual, no_tol)
@@ -1188,7 +1188,7 @@ contains
    @instantiate(assert_greater_than, minimal)
    @instantiate(assert_greater_than_or_equal, minimal)
    @instantiate(assert_relatively_equal, minimal)
-   @instantiate(assert_approx, minimal)
+   @instantiate(assert_approximately_equal, minimal)
    
 end module pf_AssertReal_{rank}d
 

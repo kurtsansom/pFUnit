@@ -40,40 +40,40 @@ contains
 
   @test
   subroutine test_relatively_equal_scalar()
-     @assertApprox(1, 1.1, 0.2, 0.2)
-     @assertApprox(1.0, 1.1, 0.2, 0.2)
-     @assertApprox(1.0, 1.1, 0.2, 0.2)
-     @assertApprox(0.005, 0.006, 0.1, 0.01)
-     @assertApprox(0.0, 0.0, 0.1, 0.01)
+     @assertApproximatelyEqual(1, 1.1, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, 1.1, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, 1.1, 0.2, 0.2)
+     @assertApproximatelyEqual(0.005, 0.006, 0.1, 0.01)
+     @assertApproximatelyEqual(0.0, 0.0, 0.1, 0.01)
 
 #ifdef _REAL32
-     @assertApprox(1, 1.1_REAL32, 0.2, 0.2)
-     @assertApprox(1.0, 1.1_REAL32, 0.2, 0.2)
-     @assertApprox(1.0_REAL32, 1.1_REAL32, 0.2, 0.2)
+     @assertApproximatelyEqual(1, 1.1_REAL32, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, 1.1_REAL32, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0_REAL32, 1.1_REAL32, 0.2, 0.2)
 
-     @assertApprox(1, 1.1_REAL32, 0.2_REAL32, 0.2_REAL32)
-     @assertApprox(1.0, 1.1_REAL32, 0.2_REAL32, 0.2_REAL32)
-     @assertApprox(1.0_REAL32, 1.1_REAL32, 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual(1, 1.1_REAL32, 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual(1.0, 1.1_REAL32, 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual(1.0_REAL32, 1.1_REAL32, 0.2_REAL32, 0.2_REAL32)
 #endif
      
 #ifdef _REAL64
-     @assertApprox(1, 1.1_REAL64, 0.2, 0.2)
-     @assertApprox(1.0, 1.1_REAL64, 0.2, 0.2)
-     @assertApprox(1.0_REAL64, 1.1_REAL64, 0.2, 0.2)
+     @assertApproximatelyEqual(1, 1.1_REAL64, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, 1.1_REAL64, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0_REAL64, 1.1_REAL64, 0.2, 0.2)
 
-     @assertApprox(1, 1.1_REAL64, 0.2_REAL64, 0.2_REAL64)
-     @assertApprox(1.0, 1.1_REAL64, 0.2_REAL64, 0.2_REAL64)
-     @assertApprox(1.0_REAL64, 1.1_REAL64, 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual(1, 1.1_REAL64, 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual(1.0, 1.1_REAL64, 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual(1.0_REAL64, 1.1_REAL64, 0.2_REAL64, 0.2_REAL64)
 #endif
 
 #ifdef _REAL128
-     @assertApprox(1, 1.1_REAL128, 0.2, 0.2)
-     @assertApprox(1.0, 1.1_REAL128, 0.2, 0.2)
-     @assertApprox(1.0_REAL128, 1.1_REAL128, 0.2, 0.2)
+     @assertApproximatelyEqual(1, 1.1_REAL128, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, 1.1_REAL128, 0.2, 0.2)
+     @assertApproximatelyEqual(1.0_REAL128, 1.1_REAL128, 0.2, 0.2)
 
-     @assertApprox(1, 1.1_REAL128, 0.2_REAL128, 0.2_REAL128)
-     @assertApprox(1.0, 1.1_REAL128, 0.2_REAL128, 0.2_REAL128)
-     @assertApprox(1.0_REAL128, 1.1_REAL128, 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual(1, 1.1_REAL128, 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual(1.0, 1.1_REAL128, 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual(1.0_REAL128, 1.1_REAL128, 0.2_REAL128, 0.2_REAL128)
 #endif
 
   end subroutine test_relatively_equal_scalar
@@ -81,59 +81,59 @@ contains
   @test
   subroutine test_relatively_equal_1D_actual
 
-     @assertApprox(1, [1.1], 0.2, 0.2)
-     @assertApprox(1.0, [1.1,1.1,1.1], 0.2, 0.2)
-     @assertApprox(1.1, [1.1,1.1,1.1],0.2,0.2)
-     @assertApprox([1,2], [1.1,2.1], 0.2, 0.2)
-     @assertApprox([1.0,2.0], [1.1,2.1], 0.2, 0.2)
-     @assertApprox([1.1,2.1], [1.1,2.1], 0.2, 0.2)
+     @assertApproximatelyEqual(1, [1.1], 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, [1.1,1.1,1.1], 0.2, 0.2)
+     @assertApproximatelyEqual(1.1, [1.1,1.1,1.1],0.2,0.2)
+     @assertApproximatelyEqual([1,2], [1.1,2.1], 0.2, 0.2)
+     @assertApproximatelyEqual([1.0,2.0], [1.1,2.1], 0.2, 0.2)
+     @assertApproximatelyEqual([1.1,2.1], [1.1,2.1], 0.2, 0.2)
 
 #ifdef _REAL32      
-     @assertApprox(1, [1.1_REAL32], 0.2, 0.2)
-     @assertApprox(1.0, [1.1_REAL32,1.1_REAL32,1.1_REAL32], 0.2, 0.2)
-     @assertApprox(1.1_REAL32, [1.1_REAL32,1.1_REAL32,1.1_REAL32],0.2,0.2)
-     @assertApprox([1,2], [1.1_REAL32,2.1_REAL32], 0.2, 0.2)
-     @assertApprox([1.0,2.0], [1.1_REAL32,2.1_REAL32], 0.2, 0.2)
-     @assertApprox([1.1_REAL32,2.1_REAL32], [1.1_REAL32,2.1_REAL32], 0.2, 0.2)
+     @assertApproximatelyEqual(1, [1.1_REAL32], 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, [1.1_REAL32,1.1_REAL32,1.1_REAL32], 0.2, 0.2)
+     @assertApproximatelyEqual(1.1_REAL32, [1.1_REAL32,1.1_REAL32,1.1_REAL32],0.2,0.2)
+     @assertApproximatelyEqual([1,2], [1.1_REAL32,2.1_REAL32], 0.2, 0.2)
+     @assertApproximatelyEqual([1.0,2.0], [1.1_REAL32,2.1_REAL32], 0.2, 0.2)
+     @assertApproximatelyEqual([1.1_REAL32,2.1_REAL32], [1.1_REAL32,2.1_REAL32], 0.2, 0.2)
 
-     @assertApprox(1, [1.1_REAL32], 0.2_REAL32, 0.2_REAL32)
-     @assertApprox(1.0, [1.1_REAL32,1.1_REAL32,1.1_REAL32], 0.2_REAL32, 0.2_REAL32)
-     @assertApprox(1.1_REAL32, [1.1_REAL32,1.1_REAL32,1.1_REAL32],0.2_REAL32,0.2_REAL32)
-     @assertApprox([1,2], [1.1_REAL32,2.1_REAL32], 0.2_REAL32, 0.2_REAL32)
-     @assertApprox([1.0,2.0], [1.1_REAL32,2.1_REAL32], 0.2_REAL32, 0.2_REAL32)
-     @assertApprox([1.1_REAL32,2.1_REAL32], [1.1_REAL32,2.1_REAL32], 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual(1, [1.1_REAL32], 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual(1.0, [1.1_REAL32,1.1_REAL32,1.1_REAL32], 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual(1.1_REAL32, [1.1_REAL32,1.1_REAL32,1.1_REAL32],0.2_REAL32,0.2_REAL32)
+     @assertApproximatelyEqual([1,2], [1.1_REAL32,2.1_REAL32], 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual([1.0,2.0], [1.1_REAL32,2.1_REAL32], 0.2_REAL32, 0.2_REAL32)
+     @assertApproximatelyEqual([1.1_REAL32,2.1_REAL32], [1.1_REAL32,2.1_REAL32], 0.2_REAL32, 0.2_REAL32)
 #endif
 
 #ifdef _REAL64
-     @assertApprox(1, [1.1_REAL64], 0.2, 0.2)
-     @assertApprox(1.0, [1.1_REAL64,1.1_REAL64,1.1_REAL64], 0.2, 0.2)
-     @assertApprox(1.1_REAL64, [1.1_REAL64,1.1_REAL64,1.1_REAL64],0.2,0.2)
-     @assertApprox([1,2], [1.1_REAL64,2.1_REAL64], 0.2, 0.2)
-     @assertApprox([1.0,2.0], [1.1_REAL64,2.1_REAL64], 0.2, 0.2)
-     @assertApprox([1.1_REAL64,2.1_REAL64], [1.1_REAL64,2.1_REAL64], 0.2, 0.2)
+     @assertApproximatelyEqual(1, [1.1_REAL64], 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, [1.1_REAL64,1.1_REAL64,1.1_REAL64], 0.2, 0.2)
+     @assertApproximatelyEqual(1.1_REAL64, [1.1_REAL64,1.1_REAL64,1.1_REAL64],0.2,0.2)
+     @assertApproximatelyEqual([1,2], [1.1_REAL64,2.1_REAL64], 0.2, 0.2)
+     @assertApproximatelyEqual([1.0,2.0], [1.1_REAL64,2.1_REAL64], 0.2, 0.2)
+     @assertApproximatelyEqual([1.1_REAL64,2.1_REAL64], [1.1_REAL64,2.1_REAL64], 0.2, 0.2)
 
-     @assertApprox(1, [1.1_REAL64], 0.2_REAL64, 0.2_REAL64)
-     @assertApprox(1.0, [1.1_REAL64,1.1_REAL64,1.1_REAL64], 0.2_REAL64, 0.2_REAL64)
-     @assertApprox(1.1_REAL64, [1.1_REAL64,1.1_REAL64,1.1_REAL64],0.2_REAL64,0.2_REAL64)
-     @assertApprox([1,2], [1.1_REAL64,2.1_REAL64], 0.2_REAL64, 0.2_REAL64)
-     @assertApprox([1.0,2.0], [1.1_REAL64,2.1_REAL64], 0.2_REAL64, 0.2_REAL64)
-     @assertApprox([1.1_REAL64,2.1_REAL64], [1.1_REAL64,2.1_REAL64], 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual(1, [1.1_REAL64], 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual(1.0, [1.1_REAL64,1.1_REAL64,1.1_REAL64], 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual(1.1_REAL64, [1.1_REAL64,1.1_REAL64,1.1_REAL64],0.2_REAL64,0.2_REAL64)
+     @assertApproximatelyEqual([1,2], [1.1_REAL64,2.1_REAL64], 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual([1.0,2.0], [1.1_REAL64,2.1_REAL64], 0.2_REAL64, 0.2_REAL64)
+     @assertApproximatelyEqual([1.1_REAL64,2.1_REAL64], [1.1_REAL64,2.1_REAL64], 0.2_REAL64, 0.2_REAL64)
 #endif
 
 #ifdef _REAL128
-     @assertApprox(1, [1.1_REAL128], 0.2, 0.2)
-     @assertApprox(1.0, [1.1_REAL128,1.1_REAL128,1.1_REAL128], 0.2, 0.2)
-     @assertApprox(1.1_REAL128, [1.1_REAL128,1.1_REAL128,1.1_REAL128],0.2,0.2)
-     @assertApprox([1,2], [1.1_REAL128,2.1_REAL128], 0.2, 0.2)
-     @assertApprox([1.0,2.0], [1.1_REAL128,2.1_REAL128], 0.2, 0.2)
-     @assertApprox([1.1_REAL128,2.1_REAL128], [1.1_REAL128,2.1_REAL128], 0.2, 0.2)
+     @assertApproximatelyEqual(1, [1.1_REAL128], 0.2, 0.2)
+     @assertApproximatelyEqual(1.0, [1.1_REAL128,1.1_REAL128,1.1_REAL128], 0.2, 0.2)
+     @assertApproximatelyEqual(1.1_REAL128, [1.1_REAL128,1.1_REAL128,1.1_REAL128],0.2,0.2)
+     @assertApproximatelyEqual([1,2], [1.1_REAL128,2.1_REAL128], 0.2, 0.2)
+     @assertApproximatelyEqual([1.0,2.0], [1.1_REAL128,2.1_REAL128], 0.2, 0.2)
+     @assertApproximatelyEqual([1.1_REAL128,2.1_REAL128], [1.1_REAL128,2.1_REAL128], 0.2, 0.2)
 
-     @assertApprox(1, [1.1_REAL128], 0.2_REAL128, 0.2_REAL128)
-     @assertApprox(1.0, [1.1_REAL128,1.1_REAL128,1.1_REAL128], 0.2_REAL128, 0.2_REAL128)
-     @assertApprox(1.1_REAL128, [1.1_REAL128,1.1_REAL128,1.1_REAL128],0.2_REAL128,0.2_REAL128)
-     @assertApprox([1,2], [1.1_REAL128,2.1_REAL128], 0.2_REAL128, 0.2_REAL128)
-     @assertApprox([1.0,2.0], [1.1_REAL128,2.1_REAL128], 0.2_REAL128, 0.2_REAL128)
-     @assertApprox([1.1_REAL128,2.1_REAL128], [1.1_REAL128,2.1_REAL128], 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual(1, [1.1_REAL128], 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual(1.0, [1.1_REAL128,1.1_REAL128,1.1_REAL128], 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual(1.1_REAL128, [1.1_REAL128,1.1_REAL128,1.1_REAL128],0.2_REAL128,0.2_REAL128)
+     @assertApproximatelyEqual([1,2], [1.1_REAL128,2.1_REAL128], 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual([1.0,2.0], [1.1_REAL128,2.1_REAL128], 0.2_REAL128, 0.2_REAL128)
+     @assertApproximatelyEqual([1.1_REAL128,2.1_REAL128], [1.1_REAL128,2.1_REAL128], 0.2_REAL128, 0.2_REAL128)
 #endif
      
   end subroutine test_relatively_equal_1D_actual
@@ -142,11 +142,11 @@ contains
   @test
   subroutine test_rel_equal_fail_scalar_with_tolerance()
      ! This should succeed.
-     call assertApprox(10.0, 11.0, 0.2, 0.2)
+     call assertApproximatelyEqual(10.0, 11.0, 0.2, 0.2)
      ! But this should fail
-     call assertApprox(10.0, 12.0, 0.1, 0.1)
+     call assertApproximatelyEqual(10.0, 12.0, 0.1, 0.1)
      call assertExceptionRaised(&
-          & 'AssertApprox failure:' // NL // &
+          & 'AssertApproximatelyEqual failure:' // NL // &
           & '           Expected: <'//to_string(10.)//'>' // NL // &
           & '             Actual: <'//to_string(12.)//'>' // NL // &
           & '         Difference: <'//to_string(2.0)//'> (greater than calculated tolerance of '//to_string(1.0)//')' &

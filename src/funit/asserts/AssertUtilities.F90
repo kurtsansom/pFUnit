@@ -359,7 +359,7 @@ contains
 
       _UNUSED_DUMMY(unused)
 
-      fail_message = base_message('AssertApprox', message, index)
+      fail_message = base_message('AssertApproximatelyEqual', message, index)
       fail_message = fail_message // new_line('A')    // '           Expected: <' // expected // '>' 
       fail_message = fail_message // new_line('A')    // '             Actual: <' // actual // '>'
       fail_message = fail_message // new_line('A')    // '         Difference: ' // difference

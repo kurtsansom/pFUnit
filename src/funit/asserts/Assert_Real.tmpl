@@ -249,7 +249,7 @@ module pf_AssertReal_{rank}d
    @overload(AssertGreaterThanOrEqual, no_tol)
 
    @overload(AssertRelativelyEqual, with_tol)
-   @overload(AssertApprox, with_rel_tol)
+   @overload(assertApproximatelyEqual, with_rel_tol)
    @overload(AssertAssociated, minimal)
 
    @overload(assert_equal, minimal)
@@ -1056,7 +1056,7 @@ contains
    end subroutine {name}
    @end template
 
-   @template(AssertApprox,[expected,actual,rel_tolerance,tolerance])
+   @template(AssertApproximatelyEqual,[expected,actual,rel_tolerance,tolerance])
    subroutine {name}(expected, actual, rel_tolerance, tolerance, message, location)
       {expected.type} (kind={expected.kind}), intent(in) :: expected {expected.dims}
       {actual.type} (kind={actual.kind}), intent(in) :: actual {actual.dims}
@@ -1078,7 +1078,7 @@ contains
       e = 0*actual + expected
 
       !if (any([e] == 0)) then
-      !   call fail_generic('Small denominator detected in AssertApprox.',message=message, location=location)
+      !   call fail_generic('Small denominator detected in AssertApproximatelyEqual.',message=message, location=location)
       !   return
       !end if
 
@@ -1170,7 +1170,7 @@ contains
    @instantiate(AssertGreaterThan, with_tol)
    @instantiate(AssertGreaterThanOrEqual, with_tol)
    @instantiate(AssertRelativelyEqual, with_tol)
-   @instantiate(AssertApprox, with_rel_tol)
+   @instantiate(AssertApproximatelyEqual, with_rel_tol)
 
    @instantiate(AssertEqual, no_tol)
    @instantiate(AssertNotEqual, no_tol)
